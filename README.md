@@ -41,6 +41,8 @@ spec:
     ...
 ```
 
+To run this application in a Docker container:
+
 ```bash
 docker build -t halosan/k8-pod-scheduler:latest .
 docker run -v $HOME/.kube:/root/.kube -e "SCALE=scaleUp" halosan/k8-pod-scheduler:latest 
