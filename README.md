@@ -50,6 +50,11 @@ docker run -v $HOME/.kube:/root/.kube -e "SCALE=scaleUp" halosan/k8-pod-schedule
 
 The environment variable `SCALE` can either be `scaleUp` or `scaleDown`.
 
+### Jobs/CronJobs (In cluster)
+
+If you intend to run this in the Kubernetes cluster, you can use the two example
+manifests in the `kubernetes` directory as a guideline.
+
 ## Development
 
 ### Development through Docker
