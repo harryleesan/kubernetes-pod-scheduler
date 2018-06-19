@@ -45,7 +45,6 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-	// fmt.Printf("#%v", deploymentlist)
 	for _, deployment := range deploymentlist.Items {
 		scaleError := scale(deployment)
 		if scaleError != nil {

@@ -1,6 +1,7 @@
 ## Usage
 
-In the Kubernetes Deployment manifest, add the annotations _scaleUp_ and
+In the Kubernetes Deployment manifest of the Deployments that you would like to
+scale, add the annotations _scaleUp_ and
 _scaleDown_.
 
 ```yaml
