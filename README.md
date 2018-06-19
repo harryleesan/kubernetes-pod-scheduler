@@ -66,7 +66,7 @@ docker run --rm -it -v $(pwd):/go/src/app \
 From the root directory of this project:
 
 ```bash
-glide up -v
+glide install
 ```
 
 This will create a `vendor` directory which has the correct version of Kubernetes `client-go`.
