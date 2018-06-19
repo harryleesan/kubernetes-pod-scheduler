@@ -2,14 +2,12 @@ package main
 
 import (
 	"errors"
-	"flag"
 	"fmt"
 	"k8s.io/api/extensions/v1beta1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
-	"k8s.io/client-go/tools/clientcmd"
+	"k8s.io/client-go/rest"
 	"os"
-	"path/filepath"
 	"strconv"
 )
 
@@ -69,17 +67,9 @@ func main() {
 // kubeClientSetUp() creates the client used to connect to the kubernetes
 // cluster.
 func kubeClientSetUp() {
-	var kubeconfig *string
-	if home := homeDir(); home != "" {
-		kubeconfig = flag.String("kubeconfig", filepath.Join(home, ".kube", "config"), "(optional) absolute path to the kubeconfig file")
-	} else {
-		kubeconfig = flag.String("kubeconfig", "", "absolute path to the kubeconfig file")
-	}
-	fmt.Printf("Kubeconfig used: %s\n\n", *kubeconfig)
-	flag.Parse()
 
 	// use the current context in kubeconfig
-	config, err := clientcmd.BuildConfigFromFlags("", *kubeconfig)
+	config, err := rest.InClusterConfig()
 	if err != nil {
 		panic(err.Error())
 	}
@@ -89,11 +79,4 @@ func kubeClientSetUp() {
 	if err != nil {
 		panic(err.Error())
 	}
-}
-
-func homeDir() string {
-	if h := os.Getenv("HOME"); h != "" {
-		return h
-	}
-	return os.Getenv("USERPROFILE") // windows
 }
