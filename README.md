@@ -48,6 +48,8 @@ docker build -t halosan/k8-pod-scheduler:latest .
 docker run -v $HOME/.kube:/root/.kube -e "SCALE=scaleUp" halosan/k8-pod-scheduler:latest 
 ```
 
+The environment variable `SCALE` can either be `scaleUp` or `scaleDown`.
+
 ## Development
 
 ### Development through Docker
