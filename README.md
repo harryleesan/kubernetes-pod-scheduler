@@ -1,7 +1,20 @@
+## Introduction
+
+This **Go** application checks **all** Kubernetes Deployments in all namespaces for scaling
+annotations and scales the deployment according to the annotations.
+
+There are **two** branches in this repo:
+
+- _master_ branch uses your own kubeconfig to access the cluster. This can be
+  run in Docker on your local machine.
+- _master-incluster_ branch is meant to be deployed in your Kubernetes cluster
+  to be run as a **Job/CronJob**. This makes use of _service account tokens_ to
+  give your pod access to the cluster.
+
 ## Usage
 
-In the Kubernetes Deployment manifest of the Deployments that you would like to
-scale, add the annotations _scaleUp_ and
+In the Kubernetes Deployment manifest of the Deployment that you want to enable
+scaling, add the annotations _scaleUp_ and
 _scaleDown_.
 
 ```yaml
